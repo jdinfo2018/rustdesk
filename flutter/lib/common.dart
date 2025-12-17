@@ -1553,7 +1553,31 @@ Future<void> initGlobalFFI() async {
   debugPrint("_globalFFI init end");
   // after `put`, can also be globally found by Get.find<FFI>();
   Get.put<FFI>(_globalFFI, permanent: true);
+
+    // --- INICIO DA PERSONALIZAÇÃO JD SUPORTE ---
+  // AQUI VOCÊ ESCOLHE: DOMÍNIO OU IP
+  // O código abaixo força a configuração toda vez que o app abre.
+  
+  await setServerConfig(
+    null, 
+    null, 
+    ServerConfig(
+      // OPÇÃO 1 (Recomendada): Usar o Domínio
+      //idServer: 'jdcloudbackup.com.br',
+      //relayServer: 'jdcloudbackup.com.br',
+      
+      // OPÇÃO 2 (Alternativa): Usar o IP direto (Descomente abaixo e comente as linhas acima se preferir)
+       idServer: '157.180.78.126',
+       relayServer: '157.180.78.126',
+
+      // Configurações Padrão
+      apiServer: '', // Deixe vazio para versão Open Source/Docker
+      key: 'oXTVd8C0oR6tPoihydn3s1JF8Z0SwtyMlX9sn8Znp+8=',
+    )
+  );
+  // --- FIM DA PERSONALIZAÇÃO ---
 }
+
 
 String translate(String name) {
   if (name.startsWith('Failed to') && name.contains(': ')) {
